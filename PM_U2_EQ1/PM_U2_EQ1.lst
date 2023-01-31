@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    01/26/23 20:38:27
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    01/31/23 00:49:59
 NombreProgram						     Page 1 - 1
 
 
@@ -35,20 +35,33 @@ Microsoft (R) Macro Assembler Version 14.34.31937.0	    01/26/23 20:38:27
 
  00000000			.data
 				; Área de Declaración de Variables
+ 00000000 49 6E 67 72 65	cadena db "Ingresa un numero: ", 0
+	   73 61 20 75 6E
+	   20 6E 75 6D 65
+	   72 6F 3A 20 00
 
  00000000			.code
 
- 00000000				main2 PROC
+ 00000000				main5 PROC
 					
 						;Lógica del Programa
-					
+
+ 00000000  BA 00000000 R			mov edx, offset cadena
+ 00000005  E8 00000000 E			call writestring
+ 0000000A  E8 00000000 E			call crlf
+
+ 0000000F  E8 00000000 E			call readint	;lee un valor ingresado por consola y lo almacena en eax
+
+ 00000014  E8 00000000 E			call crlf
+ 00000019  E8 00000000 E			call writeint	;echo para comprobar el contenido eax
+
 						
 						exit	
 					
- 00000007				main2 ENDP
+ 00000025				main5 ENDP
 					
-					END main2
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    01/26/23 20:38:27
+					END main5
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    01/31/23 00:49:59
 NombreProgram						     Symbols 2 - 1
 
 
@@ -142,8 +155,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000007 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000014 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000025 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -250,7 +263,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main2  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000007 Public STDCALL
+main5  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000025 Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -472,6 +485,7 @@ WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
 brown  . . . . . . . . . . . . .	Number	 00000006h   
+cadena . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 cyan . . . . . . . . . . . . . .	Number	 00000003h   
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
 gray . . . . . . . . . . . . . .	Number	 00000008h   

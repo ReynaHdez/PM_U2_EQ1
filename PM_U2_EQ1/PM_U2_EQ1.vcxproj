@@ -24,6 +24,9 @@
     </MASM>
     <MASM Include="P_1_TransferenciaDatos.asm" />
     <MASM Include="P_2_IntroOpArit.asm" />
+    <MASM Include="P_3_EscrituraEnPantalla_.asm" />
+    <MASM Include="P_4_LeerDatosConsola.asm" />
+    <MASM Include="P_5_ImprimeCadenaEnConsola.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
@@ -91,7 +94,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main1</EntryPointSymbol>
+      <EntryPointSymbol>main5</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>
