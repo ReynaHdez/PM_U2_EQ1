@@ -52,8 +52,6 @@ mensaje4 db "El valor de Y es: ", 0
 
 		call writeint
 
-
-		
 		exit	
 	
 	main9 ENDP

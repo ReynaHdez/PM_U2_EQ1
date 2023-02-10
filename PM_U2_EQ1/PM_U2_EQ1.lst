@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/02/23 20:51:18
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
 NombreProgram						     Page 1 - 1
 
 
@@ -82,14 +82,12 @@ Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/02/23 20:51:18
 
  00000053  E8 00000000 E			call writeint
 
-
-						
 						exit	
 					
  0000005F				main9 ENDP
 					
 					END main9
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/02/23 20:51:18
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
 NombreProgram						     Symbols 2 - 1
 
 

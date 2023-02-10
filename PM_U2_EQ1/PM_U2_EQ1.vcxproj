@@ -22,6 +22,10 @@
     <MASM Include="P_0_Plantilla.asm">
       <FileType>Document</FileType>
     </MASM>
+    <MASM Include="P_10_Promedio5Numeros.asm" />
+    <MASM Include="P_11_AreaRectangulo.asm" />
+    <MASM Include="P_12_IntroSaltosIncondicionales.asm" />
+    <MASM Include="P_13_SaltosCondicionales.asm" />
     <MASM Include="P_1_TransferenciaDatos.asm" />
     <MASM Include="P_2_IntroOpArit.asm" />
     <MASM Include="P_3_EscrituraEnPantalla_.asm" />
@@ -98,7 +102,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main9</EntryPointSymbol>
+      <EntryPointSymbol>main13</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>
