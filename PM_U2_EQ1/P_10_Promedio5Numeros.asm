@@ -4,8 +4,8 @@ TITLE NombrePrograma
 ;Objetivo: Archivo de Ejemplo
 ;
 ; Autore(s):
-;         Apellido Nombre Integrante 1
-;         Apellido Nombre Integrante 2
+;         Hernandez Santos Reyna Margarita
+;         Salas Alardin Luis Fernando
 
 ; Semestre: 8vo Semestre ISC 
 ;FIN DESCRPICIÓN
@@ -87,7 +87,7 @@ msjResultado_10 db "El promedio es: ", 0
 
 		call writeint
 
-		
+
 		exit	
 	
 	main10 ENDP
