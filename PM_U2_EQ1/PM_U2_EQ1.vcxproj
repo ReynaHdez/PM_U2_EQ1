@@ -19,6 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="E_10_Estacionamiento.asm" />
+    <MASM Include="E_11_Pintor.asm" />
+    <MASM Include="E_12_Autobus.asm" />
+    <MASM Include="E_13_Conagua.asm" />
+    <MASM Include="E_14_CLS.asm" />
+    <MASM Include="E_15_Factorial_.asm" />
+    <MASM Include="E_16_Fibonacci.asm" />
+    <MASM Include="E_17_Pares.asm" />
+    <MASM Include="E_19_Porcentaje.asm" />
+    <MASM Include="E_4_SumaHastaNegativo_.asm" />
+    <MASM Include="E_6_Terrenos.asm" />
+    <MASM Include="E_8_Sueldo.asm" />
+    <MASM Include="E_9_Edad.asm" />
+    <MASM Include="Proyecto_TablaMutplicar_.asm" />
     <MASM Include="P_0_Plantilla.asm">
       <FileType>Document</FileType>
     </MASM>
@@ -26,7 +40,18 @@
     <MASM Include="P_11_AreaRectangulo.asm" />
     <MASM Include="P_12_IntroSaltosIncondicionales.asm" />
     <MASM Include="P_13_SaltosCondicionales.asm" />
+    <MASM Include="P_14_NumeroPar.asm" />
+    <MASM Include="P_15_ImprimirSerie_.asm" />
+    <MASM Include="P_16_Xala_Y_.asm" />
+    <MASM Include="P_17_Checar2Num_.asm" />
+    <MASM Include="P_18_LeerHastaNegativos.asm" />
+    <MASM Include="P_19_IntroPila.asm" />
     <MASM Include="P_1_TransferenciaDatos.asm" />
+    <MASM Include="P_20_CiclosAnidados1.asm" />
+    <MASM Include="P_21_TablaMultiplicar.asm" />
+    <MASM Include="P_22_MultiplicarConPila_.asm" />
+    <MASM Include="P_24_CiclosAnidados.asm" />
+    <MASM Include="P_25_NumeroPrimo_.asm" />
     <MASM Include="P_2_IntroOpArit.asm" />
     <MASM Include="P_3_EscrituraEnPantalla_.asm" />
     <MASM Include="P_4_LeerDatosConsola.asm" />
@@ -35,9 +60,13 @@
     <MASM Include="P_7_Multiplicacion_.asm" />
     <MASM Include="P_8_Division_.asm" />
     <MASM Include="P_9_EcuacionLinealRecta.asm" />
+    <MASM Include="E_5_Numeros_.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="P_23_ContarNumeroPositivos_.ams" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -102,7 +131,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main13</EntryPointSymbol>
+      <EntryPointSymbol>mainE15</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>

@@ -1,0 +1,40 @@
+TITLE NombrePrograma
+
+;DESCRPICIÓN 
+;Objetivo: Archivo de Ejemplo
+;
+; Autore(s):
+;         Apellido Nombre Integrante 1
+;         Apellido Nombre Integrante 2
+
+; Semestre: 8vo Semestre ISC 
+;FIN DESCRPICIÓN
+
+INCLUDE Irvine32.inc  
+
+
+.data
+;Area de Declaracion de Variables
+msj1_23 db "igresa numero ", 0
+
+.code
+	
+	main23 PROC
+	
+		;Lógica del Programa
+		
+		mov edx, offset msj1_23
+		call writestring
+		call crlf
+
+		ciclo:
+		call readint
+		cmp eax, -1
+		jle ciclo
+
+
+		exit	
+	
+	main23 ENDP
+	
+	END main23

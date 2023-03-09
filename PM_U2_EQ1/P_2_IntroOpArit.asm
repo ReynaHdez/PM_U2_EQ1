@@ -4,8 +4,8 @@ TITLE NombrePrograma
 ;Objetivo: Archivo de Ejemplo
 ;
 ; Autore(s):
-;         Apellido Nombre Integrante 1
-;         Apellido Nombre Integrante 2
+;         Hernandez Santos Reyna Margarita
+;         Salas Alardin Luis Fernando
 
 ; Semestre: 8vo Semestre ISC 
 ;FIN DESCRPICIÓN
@@ -29,7 +29,6 @@ var2_2 dword 2d
 		mov eax, var1_2
 		add eax, var2_2 ;resultado en -> eax
 
-		
 		exit	
 	
 	main2 ENDP

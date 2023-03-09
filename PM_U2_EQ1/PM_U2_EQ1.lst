@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 00:10:48
 NombreProgram						     Page 1 - 1
 
 
@@ -8,8 +8,8 @@ Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
 				;Objetivo: Archivo de Ejemplo
 				;
 				; Autore(s):
-				;         Apellido Nombre Integrante 1
-				;         Apellido Nombre Integrante 2
+				;         Hernandez Santos Reyna Margarita
+				;         Salas Alardin Luis Fernando
 
 				; Semestre: 8vo Semestre ISC 
 				;FIN DESCRPICIÓN
@@ -33,61 +33,61 @@ Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
 			      C .LIST
 			      C 
 
+
  00000000			.data
-				; Área de Declaración de Variables
- 00000000 00000002		var1_9 dword 2d
- 00000004 49 6E 67 72 65	mensaje1 db "Ingrese m: ", 0
-	   73 65 20 6D 3A
+				;Area de Declaracion de Variables
+				;Solicitar el valor de "X" y pedir al usuario que ingrese tantos numeros que sean menores que X
+ 00000000 49 6E 67 72 65	msj1_E5 db "Ingrese numero x : ", 0
+	   73 65 20 6E 75
+	   6D 65 72 6F 20
+	   78 20 3A 20 00
+ 00000014 49 6E 67 72 65	msj2_E5 db "Ingrese numero ", 0
+	   73 65 20 6E 75
+	   6D 65 72 6F 20
+	   00
+ 00000024 45 6C 20 6E 75	msj3_E5 db "El numero ingresado es menor que x: " , 0
+	   6D 65 72 6F 20
+	   69 6E 67 72 65
+	   73 61 64 6F 20
+	   65 73 20 6D 65
+	   6E 6F 72 20 71
+	   75 65 20 78 3A
 	   20 00
- 00000010 49 6E 67 72 65	mensaje2 db "Ingrese x: ", 0
-	   73 65 20 78 3A
-	   20 00
- 0000001C 49 6E 67 72 65	mensaje3 db "Ingrese b: ", 0
-	   73 65 20 62 3A
-	   20 00
- 00000028 45 6C 20 76 61	mensaje4 db "El valor de Y es: ", 0
-	   6C 6F 72 20 64
-	   65 20 59 20 65
-	   73 3A 20 00
 
  00000000			.code
-
- 00000000				main9 PROC
+					
+ 00000000				mainE5 PROC
 					
 						;Lógica del Programa
-
- 00000000  BA 00000004 R			mov edx, offset mensaje1
+ 00000000  BA 00000000 R			mov edx, offset msj1_E5
  00000005  E8 00000000 E			call writestring
  0000000A  E8 00000000 E			call crlf
  0000000F  E8 00000000 E			call readint
  00000014  8B D8				mov ebx, eax
 
- 00000016  BA 00000010 R			mov edx, offset mensaje2
- 0000001B  E8 00000000 E			call writestring
- 00000020  E8 00000000 E			call crlf
- 00000025  E8 00000000 E			call readint
- 0000002A  F7 E3				mul ebx
- 0000002C  8B C8				mov ecx, eax
+ 00000016					ciclo:
+ 00000016  BA 00000014 R			    mov edx, offset msj2_E5
+ 0000001B  E8 00000000 E				call writestring
+ 00000020  E8 00000000 E			    call crlf
+ 00000025  E8 00000000 E				call readint
+ 0000002A  3B C3				    cmp eax, ebx
+ 0000002C  7D E8					jge ciclo
+ 0000002E  50						push eax
 
- 0000002E  BA 0000001C R			mov edx, offset mensaje3
- 00000033  E8 00000000 E			call writestring
- 00000038  E8 00000000 E			call crlf
- 0000003D  E8 00000000 E			call readint
- 00000042  03 C1				add eax, ecx
+ 0000002F  BA 00000024 R			mov edx, offset msj3_E5
+ 00000034  E8 00000000 E			call writestring
+ 00000039  E8 00000000 E			call crlf
+ 0000003E  58					pop eax
+ 0000003F  E8 00000000 E			call writedec
+ 00000044  E8 00000000 E			call crlf
 
-
- 00000044  BA 00000028 R			mov edx, offset mensaje4
- 00000049  E8 00000000 E			call writestring
- 0000004E  E8 00000000 E			call crlf
-
- 00000053  E8 00000000 E			call writeint
 
 						exit	
 					
- 0000005F				main9 ENDP
+ 00000050				mainE5 ENDP
 					
-					END main9
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    02/09/23 20:52:48
+					END mainE5
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 00:10:48
 NombreProgram						     Symbols 2 - 1
 
 
@@ -181,8 +181,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 0000003B Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000005F Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000049 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000050 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -289,7 +289,8 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main9  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000005F Public STDCALL
+mainE5 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000050 Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000016 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -522,12 +523,10 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
-mensaje1 . . . . . . . . . . . .	Byte	 00000004 _DATA	
-mensaje2 . . . . . . . . . . . .	Byte	 00000010 _DATA	
-mensaje3 . . . . . . . . . . . .	Byte	 0000001C _DATA	
-mensaje4 . . . . . . . . . . . .	Byte	 00000028 _DATA	
+msj1_E5  . . . . . . . . . . . .	Byte	 00000000 _DATA	
+msj2_E5  . . . . . . . . . . . .	Byte	 00000014 _DATA	
+msj3_E5  . . . . . . . . . . . .	Byte	 00000024 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-var1_9 . . . . . . . . . . . . .	DWord	 00000000 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   

@@ -27,6 +27,7 @@ var1_7 dword 10d
 		;El resultado de la multiplicacion se almacena en eax
 
 		;Ejemplo 1
+
 		mov eax, 5
 		mul var1_7		;eax = eax * var1_7
 		call writeint
