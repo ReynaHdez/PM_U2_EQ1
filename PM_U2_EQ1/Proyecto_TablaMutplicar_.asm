@@ -1,3 +1,15 @@
+TITLE NombrePrograma
+
+;DESCRPICIÓN 
+;Objetivo: Archivo de Ejemplo
+;
+; Autore(s):
+;         Hernandez Santos Reyna Margarita
+;         Salas Alardin Luis Fernando
+
+; Semestre: 8vo Semestre ISC 
+;FIN DESCRPICIÓN
+
 INCLUDE Irvine32.inc  
 
 .data
@@ -88,4 +100,3 @@ mainP2 PROC
 mainP2 ENDP
 
 END mainP2
-

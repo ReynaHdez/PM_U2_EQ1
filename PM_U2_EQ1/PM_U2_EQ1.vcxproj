@@ -44,6 +44,7 @@
     <MASM Include="P_15_ImprimirSerie_.asm" />
     <MASM Include="P_16_Xala_Y_.asm" />
     <MASM Include="P_17_Checar2Num_.asm" />
+    <MASM Include="E_18_Discriminante_.asm" />
     <MASM Include="P_18_LeerHastaNegativos.asm" />
     <MASM Include="P_19_IntroPila.asm" />
     <MASM Include="P_1_TransferenciaDatos.asm" />
@@ -131,7 +132,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main25</EntryPointSymbol>
+      <EntryPointSymbol>mainP2</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>

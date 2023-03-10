@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 01:47:33
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 14:10:36
 NombreProgram						     Page 1 - 1
 
 
@@ -33,61 +33,120 @@ Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 01:47:33
 			      C .LIST
 			      C 
 
-
  00000000			.data
-				;Area de Declaracion de Variables
-				;Solicitar el valor de "X" y pedir al usuario que ingrese tantos numeros que sean menores que X
- 00000000 49 6E 67 72 65	msj1_E5 db "Ingrese numero x : ", 0
-	   73 65 20 6E 75
-	   6D 65 72 6F 20
-	   78 20 3A 20 00
- 00000014 49 6E 67 72 65	msj2_E5 db "Ingrese numero ", 0
-	   73 65 20 6E 75
-	   6D 65 72 6F 20
-	   00
- 00000024 45 6C 20 6E 75	msj3_E5 db "El numero ingresado es menor que x: " , 0
-	   6D 65 72 6F 20
-	   69 6E 67 72 65
-	   73 61 64 6F 20
-	   65 73 20 6D 65
-	   6E 6F 72 20 71
-	   75 65 20 78 3A
-	   20 00
+				; Área de Declaración de Variables
+
+ 00000000 20 78 20 00		msj_mul db " x ", 0
+ 00000004 20 3D 20 00		msj_igual db " = ", 0
+ 00000008 51 75 65 20 74	msj_elegirTabla db "Que tabla desea realizar?: ", 0
+	   61 62 6C 61 20
+	   64 65 73 65 61
+	   20 72 65 61 6C
+	   69 7A 61 72 3F
+	   3A 20 00
+
+ 00000024 55 73 74 65 64	msj_intentos db "Usted lleva un total de intentos: ", 0
+	   20 6C 6C 65 76
+	   61 20 75 6E 20
+	   74 6F 74 61 6C
+	   20 64 65 20 69
+	   6E 74 65 6E 74
+	   6F 73 3A 20 00
+ 00000047 44 65 73 65 61	msj_continuar db "Desea continuar? (1 = SI, 2 = NO)", 0
+	   20 63 6F 6E 74
+	   69 6E 75 61 72
+	   3F 20 28 31 20
+	   3D 20 53 49 2C
+	   20 32 20 3D 20
+	   4E 4F 29 00
+ 00000069 49 6E 67 72 65	msj_respuesta db "Ingrese su respuesta: ", 0
+	   73 65 20 73 75
+	   20 72 65 73 70
+	   75 65 73 74 61
+	   3A 20 00
+ 00000080 52 65 73 70 75	msj_error db "Respuesta incorrecta. "
+	   65 73 74 61 20
+	   69 6E 63 6F 72
+	   72 65 63 74 61
+	   2E 20
+
+ 00000096 00000001		varSI dword 1d
+ 0000009A 00000002		varNO dword 2d
 
  00000000			.code
-					
- 00000000				mainE5 PROC
-					
-						;Lógica del Programa
- 00000000  BA 00000000 R			mov edx, offset msj1_E5
- 00000005  E8 00000000 E			call writestring
- 0000000A  E8 00000000 E			call crlf
- 0000000F  E8 00000000 E			call readint
- 00000014  8B D8				mov ebx, eax
 
- 00000016					ciclo:
- 00000016  BA 00000014 R			    mov edx, offset msj2_E5
- 0000001B  E8 00000000 E				call writestring
- 00000020  E8 00000000 E			    call crlf
- 00000025  E8 00000000 E				call readint
- 0000002A  3B C3				    cmp eax, ebx
- 0000002C  7D E8					jge ciclo
- 0000002E  50						push eax
+ 00000000			mainP2 PROC
+				    ;Lógica del Programa
+ 00000000  BA 00000008 R	    mov edx, offset msj_elegirTabla
+ 00000005  E8 00000000 E	    call writestring
+ 0000000A  E8 00000000 E	    call crlf
+ 0000000F  E8 00000000 E	    call readint
+ 00000014  8B D8		    mov ebx, eax ; Guardar la tabla elegida en ebx
+				    
+ 00000016  B9 00000001		    mov ecx, 1 ; Inicializar contador de intentos
+ 0000001B			    cicloTabla:
+ 0000001B  8B C1		        mov eax, ecx ; Poner el número actual en eax
+ 0000001D  BA 00000000 R	        mov edx, offset msj_mul
+ 00000022  E8 00000000 E	        call writestring
+ 00000027  E8 00000000 E	        call writedec; Mostrar tabla elegida
+ 0000002C  BA 00000004 R	        mov edx, offset msj_igual
+ 00000031  E8 00000000 E	        call writestring
+				        
+ 00000036  F7 E3		        mul ebx ; Multiplicar número actual por tabla elegida
+				        
+ 00000038  E8 00000000 E	        call writedec
+ 0000003D  E8 00000000 E	        call crlf
+				        
+				        ; Preguntar al usuario la respuesta
+ 00000042  BA 00000069 R	        mov edx, offset msj_respuesta
+ 00000047  E8 00000000 E	        call writestring
+ 0000004C  E8 00000000 E	        call readint
+				        
+ 00000051  3B C2		        cmp eax, edx ; Comparar respuesta con la esperada
+ 00000053  74 2B		        je respuestaCorrecta
+				        
+				        ; Si la respuesta es incorrecta
+ 00000055  BA 00000080 R	        mov edx, offset msj_error
+ 0000005A  E8 00000000 E	        call writestring
+ 0000005F  E8 00000000 E	        call crlf
+				        
+ 00000064  41			        inc ecx ; Incrementar contador de intentos
+ 00000065  83 F9 05		        cmp ecx, 5 ; Comprobar si se han realizado 5 intentos
+ 00000068  75 B1		        jne cicloTabla ; Si no, volver a la multiplicación
+				        
+				        ; Si se han realizado 5 intentos
+ 0000006A  BA 00000024 R	        mov edx, offset msj_intentos
+ 0000006F  E8 00000000 E	        call writestring
+ 00000074  E8 00000000 E	        call writedec ; Mostrar el contador de intentos
+ 00000079  E8 00000000 E	        call crlf
+ 0000007E  EB 36		        jmp fin
+				        
+ 00000080			    respuestaCorrecta:
+ 00000080  41			        inc ecx ; Incrementar contador de intentos
+ 00000081  BA 00000024 R	        mov edx, offset msj_intentos
+ 00000086  E8 00000000 E	        call writestring
+ 0000008B  E8 00000000 E	        call writedec ; Mostrar el contador de intentos
+ 00000090  E8 00000000 E	        call crlf
+				        
+				        ; Preguntar si se desea continuar
+ 00000095  BA 00000047 R	        mov edx, offset msj_continuar
+ 0000009A  E8 00000000 E	        call writestring
+ 0000009F  E8 00000000 E	        call crlf
+ 000000A4  E8 00000000 E	        call readint
+				        
+ 000000A9  3B 05 0000009A R	        cmp eax, varNO ; Si no desea continuar, terminar programa
+ 000000AF  74 05		        je fin
+				        
+				        ; Si desea continuar, volver a la multiplicación
+ 000000B1  E9 FFFFFF65		        jmp cicloTabla
+				    
+ 000000B6			    fin:
+				        exit
+				        
+ 000000BD			mainP2 ENDP
 
- 0000002F  BA 00000024 R			mov edx, offset msj3_E5
- 00000034  E8 00000000 E			call writestring
- 00000039  E8 00000000 E			call crlf
- 0000003E  58					pop eax
- 0000003F  E8 00000000 E			call writedec
- 00000044  E8 00000000 E			call crlf
-
-
-						exit	
-					
- 00000050				mainE5 ENDP
-					
-					END mainE5
-Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 01:47:33
+				END mainP2
+Microsoft (R) Macro Assembler Version 14.34.31937.0	    03/09/23 14:10:36
 NombreProgram						     Symbols 2 - 1
 
 
@@ -181,8 +240,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000049 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000050 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000009E Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000000BD Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -289,8 +348,10 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-mainE5 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000050 Public STDCALL
-  ciclo  . . . . . . . . . . . .	L Near	 00000016 _TEXT	
+mainP2 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000000BD Public STDCALL
+  cicloTabla . . . . . . . . . .	L Near	 0000001B _TEXT	
+  respuestaCorrecta  . . . . . .	L Near	 00000080 _TEXT	
+  fin  . . . . . . . . . . . . .	L Near	 000000B6 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -523,10 +584,16 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
-msj1_E5  . . . . . . . . . . . .	Byte	 00000000 _DATA	
-msj2_E5  . . . . . . . . . . . .	Byte	 00000014 _DATA	
-msj3_E5  . . . . . . . . . . . .	Byte	 00000024 _DATA	
+msj_continuar  . . . . . . . . .	Byte	 00000047 _DATA	
+msj_elegirTabla  . . . . . . . .	Byte	 00000008 _DATA	
+msj_error  . . . . . . . . . . .	Byte	 00000080 _DATA	
+msj_igual  . . . . . . . . . . .	Byte	 00000004 _DATA	
+msj_intentos . . . . . . . . . .	Byte	 00000024 _DATA	
+msj_mul  . . . . . . . . . . . .	Byte	 00000000 _DATA	
+msj_respuesta  . . . . . . . . .	Byte	 00000069 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
+varNO  . . . . . . . . . . . . .	DWord	 0000009A _DATA	
+varSI  . . . . . . . . . . . . .	DWord	 00000096 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   

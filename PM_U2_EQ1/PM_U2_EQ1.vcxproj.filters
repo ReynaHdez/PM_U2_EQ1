@@ -41,6 +41,7 @@
     <MASM Include="P_25_NumeroPrimo_.asm" />
     <MASM Include="Proyecto_TablaMutplicar_.asm" />
     <MASM Include="E_15_Factorial_.asm" />
+    <MASM Include="E_18_Discriminante_.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
